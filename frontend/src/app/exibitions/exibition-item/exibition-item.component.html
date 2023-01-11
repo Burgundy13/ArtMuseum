@@ -7,8 +7,10 @@
       <p>{{ exibition.location.site }}, {{ exibition.location.room }}</p>
       <p>{{ exibition.description }}</p>
     </div>
-    <div class="card-actions ms-auto">
-      <button class="btn btn-dark float-end">Edit</button>
+    <div class="card-actions ms-auto" *ngIf="edit">
+      <button class="btn btn-dark float-end" (click)="onEditClicked()">
+        Edit
+      </button>
     </div>
   </div>
 </div>

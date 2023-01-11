@@ -18,4 +18,12 @@ export class ArtmuseumService {
       })
     );
   }
+
+  getOneExibition(id: number): Observable<Exibition> {
+    return this.http.get(`${exibitionsUrl}/${id}`).pipe(
+      map((data: any) => {
+        return new Exibition(data);
+      })
+    );
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Exibition } from 'src/app/model/exibition';
 
 @Component({
@@ -9,7 +9,14 @@ import { Exibition } from 'src/app/model/exibition';
 export class ExibitionItemComponent implements OnInit {
   @Input() exibition: Exibition = new Exibition();
 
+  @Input() edit = false;
+
+  @Output() editChange: EventEmitter<boolean> = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {}
+
+  onEditClicked(): void {
+    this.editChange.emit(true);
+  }
 }

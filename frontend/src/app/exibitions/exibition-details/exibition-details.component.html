@@ -1,1 +1,5 @@
-<p>exibition-details works!</p>
+<app-exibition-item
+  [exibition]="exibition"
+  [edit]="!edit"
+  (editChange)="onEditChange()"
+></app-exibition-item>
