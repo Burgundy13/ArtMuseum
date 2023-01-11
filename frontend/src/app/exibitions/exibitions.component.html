@@ -1,1 +1,5 @@
-<p>exibitions works!</p>
+<div class="row" *ngFor="let itemExibition of exibitions">
+  <div class="col">
+    <app-exibition-item [exibition]="itemExibition"></app-exibition-item>
+  </div>
+</div>

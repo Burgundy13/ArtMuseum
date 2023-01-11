@@ -10,6 +10,10 @@ import { NavBarComponent } from './core/nav-bar/nav-bar.component';
 import { ExibitionsComponent } from './exibitions/exibitions.component';
 import { ExibitionFormComponent } from './exibitions/exibition-form/exibition-form.component';
 import { ExibitionDetailsComponent } from './exibitions/exibition-details/exibition-details.component';
+import { ExibitionEditComponent } from './exibitions/exibition-edit/exibition-edit.component';
+import { ExibitionItemComponent } from './exibitions/exibition-item/exibition-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,14 +23,18 @@ import { ExibitionDetailsComponent } from './exibitions/exibition-details/exibit
     NavBarComponent,
     ExibitionsComponent,
     ExibitionFormComponent,
-    ExibitionDetailsComponent
+    ExibitionDetailsComponent,
+    ExibitionEditComponent,
+    ExibitionItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

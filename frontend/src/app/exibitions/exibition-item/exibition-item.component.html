@@ -1,0 +1,14 @@
+<div class="card mt-3">
+  <div class="card-body">
+    <h4 class="card-title cursor" [routerLink]="[exibition._id]">
+      {{ exibition.title }}
+    </h4>
+    <div class="card-text">
+      <p>{{ exibition.location.site }}, {{ exibition.location.room }}</p>
+      <p>{{ exibition.description }}</p>
+    </div>
+    <div class="card-actions ms-auto">
+      <button class="btn btn-dark float-end">Edit</button>
+    </div>
+  </div>
+</div>
