@@ -1,0 +1,24 @@
+<div class="card my-3">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-8">
+        <h4 class="card-title">{{ artwork.title }}</h4>
+        <div class="card-text">
+          <h5>
+            {{ artwork.author }} -
+            <small>{{ artwork.beginYear }}-{{ artwork.endYear }}</small>
+          </h5>
+          <p>{{ artwork.medium }}</p>
+        </div>
+      </div>
+      <div class="col-4">
+        <img
+          src="http://localhost:3000/image/{{ artwork.imageId }}.jpg"
+          width="180px"
+          height="200px"
+          alt="artwork-image"
+        />
+      </div>
+    </div>
+  </div>
+</div>

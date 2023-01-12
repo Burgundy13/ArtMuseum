@@ -3,3 +3,12 @@
   [edit]="!edit"
   (editChange)="onEditChange()"
 ></app-exibition-item>
+<div class="row">
+  <div class="col">
+    <div class="row">
+      <div class="col-6" *ngFor="let itemArt of exibitionArtworks">
+        <app-artwork-item [artwork]="itemArt"></app-artwork-item>
+      </div>
+    </div>
+  </div>
+</div>

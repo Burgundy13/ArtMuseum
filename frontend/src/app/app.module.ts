@@ -14,6 +14,8 @@ import { ExibitionEditComponent } from './exibitions/exibition-edit/exibition-ed
 import { ExibitionItemComponent } from './exibitions/exibition-item/exibition-item.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ArtworkDetailsComponent } from './artwork/artwork-details/artwork-details.component';
+import { ArtworkItemComponent } from './artwork/artwork-item/artwork-item.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     ExibitionDetailsComponent,
     ExibitionEditComponent,
     ExibitionItemComponent,
+    ArtworkDetailsComponent,
+    ArtworkItemComponent,
   ],
   imports: [
     BrowserModule,
