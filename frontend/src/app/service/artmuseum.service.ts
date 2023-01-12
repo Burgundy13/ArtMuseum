@@ -56,4 +56,24 @@ export class ArtmuseumService {
       })
     );
   }
+
+  addArtwork(exibitId: number, artworkId: number): Observable<Artwork> {
+    return this.http
+      .put(`${exibitionsUrl}/${exibitId}/artworks/${artworkId}`, {})
+      .pipe(
+        map((data: any) => {
+          return new Artwork(data);
+        })
+      );
+  }
+
+  removeArtwork(exibitId: number, artworkId: number): Observable<Artwork> {
+    return this.http
+      .delete(`${exibitionsUrl}/${exibitId}/artworks/${artworkId}`)
+      .pipe(
+        map((data: any) => {
+          return new Artwork(data);
+        })
+      );
+  }
 }

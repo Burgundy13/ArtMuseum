@@ -1,1 +1,74 @@
-<p>exibition-edit works!</p>
+<div class="row mt-3">
+  <div class="col-5">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="searchInput"
+        placeholder="Author"
+        [formControl]="searchControl"
+      />
+    </div>
+  </div>
+  <div class="col-1">
+    <button class="btn btn-dark" (click)="onSearchClick()">Search</button>
+  </div>
+  <div class="col">
+    <button class="btn btn-dark float-end me-3" (click)="onDoneClicked()">
+      Done
+    </button>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-6">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let itemArt of artworks">
+          <td>{{ itemArt.title }}</td>
+          <td>{{ itemArt.author }}</td>
+          <td>
+            <button
+              class="btn btn-dark float-end"
+              (click)="addArtwork(itemArt._id)"
+            >
+              Add
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-6">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let itemArt of exibitArtworks">
+          <td>{{ itemArt.title }}</td>
+          <td>{{ itemArt.author }}</td>
+          <td>
+            <button
+              class="btn btn-dark float-end"
+              (click)="removeArtwork(itemArt._id)"
+            >
+              Remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -3,6 +3,18 @@
   [edit]="!edit"
   (editChange)="onEditChange()"
 ></app-exibition-item>
+<div class="row" *ngIf="edit">
+  <div class="col">
+    <app-exibition-edit
+      [artworks]="filteredArtworks"
+      [exibitArtworks]="exibitionArtworks"
+      (onDone)="onDone()"
+      (search)="onSearch($event)"
+      (onAdd)="onAddArtwork($event)"
+      (onRemove)="onRemoveArtwork($event)"
+    ></app-exibition-edit>
+  </div>
+</div>
 <div class="row">
   <div class="col">
     <div class="row">

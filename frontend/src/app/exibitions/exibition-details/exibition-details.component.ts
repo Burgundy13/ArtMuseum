@@ -13,10 +13,19 @@ export class ExibitionDetailsComponent implements OnInit {
   exibition: Exibition = new Exibition();
   exibitionId: number = 0;
 
-  exibitionArtworks: Artwork[] = [];
   artworks: Artwork[] = [];
+  filteredArtworks: Artwork[] = [];
+  exibitionArtworks: Artwork[] = [];
 
   edit = false;
+
+  params = {
+    sort: 'author',
+    sortDirection: 'asc',
+    filter: {
+      author: '',
+    },
+  };
 
   constructor(
     private service: ArtmuseumService,
@@ -27,8 +36,8 @@ export class ExibitionDetailsComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.exibitionId = params['id'];
       this.getExibition();
-      this.getExibitArtworks();
       this.getArtworks();
+      this.getExibitArtworks();
     });
   }
 
@@ -47,10 +56,15 @@ export class ExibitionDetailsComponent implements OnInit {
     this.edit = true;
   }
 
+  onDone(): void {
+    this.edit = false;
+  }
+
   getExibitArtworks(): void {
     this.service.getExibitionAtrworks(this.exibitionId).subscribe({
       next: (response: Artwork[]) => {
         this.exibitionArtworks = response;
+        this.filterArtworks();
       },
       error: (response: any) => {
         console.log('Error: ', response.statusText);
@@ -58,9 +72,44 @@ export class ExibitionDetailsComponent implements OnInit {
     });
   }
   getArtworks(): void {
-    this.service.getAllArtworks().subscribe({
+    this.service.getAllArtworks(this.params).subscribe({
       next: (response: Artwork[]) => {
         this.artworks = response;
+        this.filterArtworks();
+      },
+      error: (response: any) => {
+        console.log('Error: ', response.statusText);
+      },
+    });
+  }
+  filterArtworks(): void {
+    this.filteredArtworks = this.artworks.filter((art: Artwork) => {
+      if (this.exibitionId === 0) return;
+      return art.exibition_id < 0;
+    });
+  }
+
+  onSearch(author: string): void {
+    this.params.filter.author = author;
+    this.getArtworks();
+  }
+  onAddArtwork(artId: number): void {
+    this.service.addArtwork(this.exibitionId, artId).subscribe({
+      next: (response: Artwork) => {
+        this.exibitionArtworks.push(response);
+        this.getArtworks();
+      },
+      error: (response: any) => {
+        console.log('Error: ', response.statusText);
+      },
+    });
+  }
+  onRemoveArtwork(artId: number): void {
+    this.service.removeArtwork(this.exibitionId, artId).subscribe({
+      next: (response: Artwork) => {
+        this.artworks.push(response);
+        this.getArtworks();
+        this.getExibitArtworks();
       },
       error: (response: any) => {
         console.log('Error: ', response.statusText);
