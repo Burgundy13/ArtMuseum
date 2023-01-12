@@ -3,9 +3,11 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Artwork } from '../model/artwork';
 import { Exibition } from '../model/exibition';
+import { MuseumLocation } from '../model/location';
 
 const exibitionsUrl = 'http://localhost:3000/api/exibitions';
-const artworkUrl = 'http://localhost:3000/api/artworks';
+const artworskUrl = 'http://localhost:3000/api/artworks';
+const locationsUrl = 'http://localhost:3000/api/locations';
 
 @Injectable({
   providedIn: 'root',
@@ -50,7 +52,7 @@ export class ArtmuseumService {
           ),
       };
     }
-    return this.http.get(artworkUrl, options).pipe(
+    return this.http.get(artworskUrl, options).pipe(
       map((data: any) => {
         return data && data.map((elem: any) => new Artwork(elem));
       })
@@ -75,5 +77,13 @@ export class ArtmuseumService {
           return new Artwork(data);
         })
       );
+  }
+
+  getAllLocations(): Observable<MuseumLocation[]> {
+    return this.http.get(locationsUrl).pipe(
+      map((data: any) => {
+        return data && data.map((elem: any) => new MuseumLocation(elem));
+      })
+    );
   }
 }
