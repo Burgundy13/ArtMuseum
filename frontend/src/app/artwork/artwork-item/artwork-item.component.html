@@ -2,7 +2,9 @@
   <div class="card-body">
     <div class="row">
       <div class="col-8">
-        <h4 class="card-title">{{ artwork.title }}</h4>
+        <h4 class="card-title cursor" (click)="openEnd(content)">
+          {{ artwork.title }}
+        </h4>
         <div class="card-text">
           <h5>
             {{ artwork.author }} -
@@ -22,3 +24,21 @@
     </div>
   </div>
 </div>
+<ng-template #content let-offcanvas>
+  <div class="offcanvas-header">
+    <img
+      src="http://localhost:3000/image/{{ artwork.imageId }}.jpg"
+      width="100%"
+    />
+  </div>
+  <div class="offcanvas-body">
+    <h2 class="focus">{{ artwork.title }}</h2>
+    <h4>
+      {{ artwork.author }} - {{ artwork.beginYear }}-{{ artwork.endYear }}
+    </h4>
+    <p>{{ artwork.medium }}</p>
+    <p>{{ artwork.dimensions }}</p>
+    <p>{{ artwork.description }}</p>
+    <div class="text-end"></div>
+  </div>
+</ng-template>
