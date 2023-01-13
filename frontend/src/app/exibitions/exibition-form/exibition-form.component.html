@@ -7,7 +7,7 @@
           type="text"
           class="form-control"
           id="titleInput"
-          formContorlName="title"
+          formControlName="title"
         />
       </div>
       <div class="form-group mt-2">
@@ -25,10 +25,19 @@
           class="form-control"
           formControlName="locationId"
         >
-          <option value=""></option>
+          <option
+            *ngFor="let itemLocation of locations"
+            [value]="itemLocation._id"
+          >
+            {{ itemLocation.site }}, {{ itemLocation.room }}
+          </option>
         </select>
       </div>
-      <button class="btn btn-dark float-end mt-3" [disabled]="form.invalid">
+      <button
+        class="btn btn-dark float-end mt-3"
+        [disabled]="form.invalid"
+        (click)="addExibition()"
+      >
         Add
       </button>
     </form>

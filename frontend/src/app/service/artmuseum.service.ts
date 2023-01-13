@@ -86,4 +86,11 @@ export class ArtmuseumService {
       })
     );
   }
+  postExibition(exibition: Exibition): Observable<Exibition> {
+    return this.http.post(exibitionsUrl, exibition).pipe(
+      map((data: any) => {
+        return new Exibition(data);
+      })
+    );
+  }
 }
